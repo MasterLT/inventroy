@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+</head>
+<body>
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="sidebar" id="scrollspy">
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">TABLE OF CONTENTS</li>
+            <li class="menu treeview" th:each="menus1:${session.user.menus}">
+                <a th:class="${menus1.menuClass}" th:href="${menus1.dateUrl}">
+                    <i class="fa fa-files-o"></i>
+                    <span th:text="${menus1.menuName}" th:remove="tag"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="menu treeview" th:each="menus2:${menus1.menus}">
+                        <a th:class="${menus2.menuClass}" th:href="${menus2.dateUrl}">
+                            <i class="fa fa-circle-o"></i>
+                            <span th:text="${menus2.menuName}" th:remove="tag"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</aside>
+</body>
+</html>
+
